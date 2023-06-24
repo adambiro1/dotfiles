@@ -1,3 +1,18 @@
+##container functions
+
+#ubuntu
+function container_ubuntu()
+{
+podman run -it --rm --name="ubuntu" docker.io/library/ubuntu
+}
+
+#powershell
+function container_pwsh()
+{
+   podman run -it --rm --name="powershell" mcr.microsoft.com/powershell
+ }
+#node with docker
+
 function noderun () 
 { 
     docker run -it --rm --name "NODE$(date --iso-8601)" -v "$PWD":/usr/src/myapp -w /usr/src/myapp node node "$1"
