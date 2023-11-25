@@ -1,3 +1,10 @@
+#function mhelp od aja, zisti co robi command
+function mhelp() {
+  whatis "$1"
+  man "$1" | sed -n "/^\s*${2}/,/^$/p"
+}
+
+
 ##container functions
 
 #ubuntu
