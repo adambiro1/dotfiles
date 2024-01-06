@@ -33,25 +33,48 @@ PATH="$PATH:/usr/lib/dart/bin"
 alias somtraged='nano'
 alias cnode='clear; node'
 alias lsa='ls --classify --almost-all'
-function prompt()
-{
-  local emulator; emulator=$(basename "/"$(ps -o cmd -f -p $(cat /proc/$(echo $$)/stat \
-          | cut -d \  -f 4) | tail -1 | sed 's/ .*$//'))
-  case $emulator in
-        code)
-                PS1="% "
-                ;;
-        *)
-                PS1="\u@\h:\w>\$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/') "
-                ;;
+# in man bash PROMPTING
+function prompt() {
+  ## just posix https://askubuntu.com/questions/640096/how-do-i-check-which-terminal-i-am-using#640105
+  local emulator psgit1 pscolor1
+  #emulator=$(basename "/"$(ps -o cmd -f -p "$(cat /proc/${$}/stat | cut -d ' ' -f 4)" | tail -1 | sed 's/ .*$//'))"
+  #emulator=$(ps -p ${$} | tail -n 1)
+  #if [[ "${emulator}" =~ .*"bash" ]]; then
+  emulator="${TERM_PROGRAM}"
+  #fi
+  psgit1="\$(git branch 2>'/dev/null' | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
+  pscolor1="\[\033[36m\]${psgit1}\[\033[0m\]"
+
+  case "${emulator##*\ }" in
+  *code)
+    #export PS1="${PWD##*/}%${pscolor1} "
+    export PS1="\W%${pscolor1} "
+    ;;
+  *)
+    #local hostnames=${POSHOSTNAMES:-"hp-win11 pc NP48412"}
+    #if echo "$hostnames" | grep -q $(hostname); then
+    local arr
+    declare -A arr=(["Win11"]=1 ["pc"]=1 ["NP48412"]=1 ["pc-hp"]=1)
+    [[ -v arr[$(hostname)] ]] && export PS1="\w%${pscolor1} "
+    ;;
   esac
+  unset psgit1 pscolor1 emulator arr
 }
 prompt
 
 
+# ssh
+complete -W "$(awk '/^Host\s\*/{next}; /^Host/{print $2}' "${HOME}/.ssh/config" 2>'/dev/null')" ssh sftp
 
+# Operation system specific
 
-
+if [[ $(uname -o) =~ "Linux" ]]; then
+	export CDPATH=".:$HOME" #CDPATH=".:$DOTFILES:$HOME"
+else
+	export CDPATH=".:$HOME" #CDPATH=".:$DOTFILES:$HOME"
+	## git-bash specific
+	export PATH=/bin:/usr/bin:$PATH # fix conflicts with win utils find,sort
+fi
 
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
