@@ -5,6 +5,13 @@ function mhelp() {
 }
 
 
+##.vimrc from another location
+function vim() {
+	vim -u ~/gits/dotfiles/.vimrc $1
+}
+
+
+
 ##container functions
 
 #ubuntu

@@ -3,5 +3,4 @@ fu! Mclear()                " To clear the last used search pattern
 endf
 command! Mclear call Mclear()
 
-#show numbers numbers
 set number
