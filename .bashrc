@@ -30,7 +30,7 @@ function nodecreate()
   docker run -it --name "$1" -v "$PWD":/usr/src/myapp -w /usr/src/myapp node node "$2"
 }
 PATH="$PATH:/usr/lib/dart/bin"
-alias somtraged='nano'
+alias nano='nano --rcfile /home/adam/gits/dotfiles/.nanorc'
 alias cnode='clear; node'
 alias lsa='ls --classify --almost-all'
 # in man bash PROMPTING
