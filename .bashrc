@@ -58,7 +58,7 @@ function prompt() {
     #local hostnames=${POSHOSTNAMES:-"hp-win11 pc NP48412"}
     #if echo "$hostnames" | grep -q $(hostname); then
     local arr
-    declare -A arr=(["Win11"]=1 ["pc"]=1 ["NP48412"]=1 ["pc-hp"]=1 ["ThinkPad-ubuntu"]=1)
+    declare -A arr=(["Win11"]=1 ["pc"]=1 ["NP48412"]=1 ["pc-hp"]=1 ["ThinkPad"]=1)
     [[ -v arr[$(hostname)] ]] && export PS1="\w%${pscolor1} "
     ;;
   esac
