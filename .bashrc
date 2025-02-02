@@ -5,7 +5,8 @@ function mhelp() {
   man "$1" | sed -n "/^\s*${2}/,/^$/p"
 }
 
-
+# set vim as default editor
+export EDITOR="/usr/bin/vim"
 export VIMINIT="source /home/adam/gits/dotfiles/.vimrc"
 #PATH="$PATH:/usr/lib/dart/bin"
 alias vi='vim'
