@@ -13,6 +13,8 @@ alias nano='nano --rcfile /home/adam/gits/dotfiles/.nanorc'
 alias cnode='clear; node'
 alias lsa='ls --classify --almost-all'
 alias ncdu='ncdu --color dark'
+#kubectl bash completion
+source <(kubectl completion bash)
 # in man bash PROMPTING
 function prompt() {
   ## just posix https://askubuntu.com/questions/640096/how-do-i-check-which-terminal-i-am-using#640105
