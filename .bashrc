@@ -16,6 +16,8 @@ alias lsa='ls --classify --almost-all'
 alias ncdu='ncdu --color dark'
 #kubectl bash completion
 source <(kubectl completion bash)
+# alias ps with c groups
+alias psc='ps xawf -eo pid,user,cgroup,args'
 # in man bash PROMPTING
 function prompt() {
   ## just posix https://askubuntu.com/questions/640096/how-do-i-check-which-terminal-i-am-using#640105
