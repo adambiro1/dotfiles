@@ -5,4 +5,13 @@ fu! Mclear()                      "funkcia od aja na zrusenie oznacenia
 endf
 command! Mclear call Mclear()
 
-set number
+autocmd FileType java setlocal ai ts=4 sw=4 et
+set relativenumber 
+set ruler
+set hlsearch
+inoremap { {}<Esc>ha
+inoremap ( ()<Esc>ha
+inoremap [ []<Esc>ha
+inoremap " ""<Esc>ha
+inoremap ' ''<Esc>ha
+inoremap ` ``<Esc>ha
