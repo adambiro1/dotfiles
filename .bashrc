@@ -8,7 +8,7 @@ function mhelp() {
 # set vim as default editor
 export EDITOR="/usr/bin/vim"
 export VIMINIT="source /home/adam/gits/dotfiles/.vimrc"
-#PATH="$PATH:/usr/lib/dart/bin"
+export PATH=$PATH:/usr/local/go/bin
 alias vi='vim'
 alias nano='nano --rcfile /home/adam/gits/dotfiles/.nanorc'
 alias cnode='clear; node'
@@ -37,7 +37,7 @@ function prompt() {
     #local hostnames=${POSHOSTNAMES:-"hp-win11 pc NP48412"}
     #if echo "$hostnames" | grep -q $(hostname); then
     local arr
-    declare -A arr=(["Win11"]=1 ["pc"]=1 ["NP48412"]=1 ["pc-hp"]=1 ["ThinkPad"]=1)
+    declare -A arr=(["Win11"]=1 ["pc"]=1 ["NP48412"]=1 ["adam-HP"]=1 ["ThinkPad"]=1)
     [[ -v arr[$(hostname)] ]] && export PS1="\w%${pscolor1} "
     ;;
   esac
