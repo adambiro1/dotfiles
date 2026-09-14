@@ -1,0 +1,29 @@
+### custom bashrc
+#source /home/adam/gits/dotfiles/.bashrc
+export psgit1="\$(git branch 2>'/dev/null' | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
+export pscolor1="\[\033[36m\]${psgit1}\[\033[0m\]"
+
+export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\w${pscolor1} "
+#export PS1="[\u@\h]\w%${pscolor1} "
+#function mhelp od aja, zisti co robi command
+
+function mhelp() {
+  whatis "$1"
+  man "$1" | sed -n "/^\s*${2}/,/^$/p"
+}
+
+# set vim as default editor
+export EDITOR="/usr/bin/vim"
+export VIMINIT="source /home/adam/gits/dotfiles/.vimrc"
+export PATH=$PATH:/usr/local/go/bin
+alias vi='vim'
+alias nano='nano --rcfile /home/adam/gits/dotfiles/.nanorc'
+alias lsa='ls --classify --almost-all'
+alias ncdu='ncdu --color dark'
+# alias ps with c groups
+alias psc='ps xawf -eo pid,user,cgroup,args'
+
+# ssh
+complete -W "$(awk '/^Host\s\*/{next}; /^Host/{print $2}' "${HOME}/.ssh/config" 2>'/dev/null')" ssh sftp
+
+
