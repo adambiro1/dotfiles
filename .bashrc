@@ -8,7 +8,6 @@ function mhelp() {
 # set vim as default editor
 export EDITOR="/usr/bin/vim"
 export VIMINIT="source /home/adam/gits/dotfiles/.vimrc"
-export PATH=$PATH:/usr/local/go/bin
 alias vi='vim'
 alias nano='nano --rcfile /home/adam/gits/dotfiles/.nanorc'
 alias cnode='clear; node'
