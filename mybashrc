@@ -2,7 +2,7 @@
 export psgit1="\$(git branch 2>'/dev/null' | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
 export pscolor1="\[\033[36m\]${psgit1}\[\033[0m\]"
 
-# for linux mint just to default $PS1 append psgit1 and pscolor1 vars and change quoting to double quotes
+# for linux mint just to default $PS1 append psgit1 and pscolor1 vars and change quoting to double quotes add $ and space
 
 #green 
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\w${pscolor1} "
